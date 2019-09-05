@@ -22,7 +22,7 @@ func GetServerInfo() {
         s = string(ip) 
         s =  strings.Replace(s,"Manufacturer","服务器厂家",-1)
         s =  strings.Replace(s,"Product Name","服务器型号",-1)
-        s =  strings.Replace(s,"Serial Number","序列号",-1)
+        s =  strings.Replace(s,"Serial Number","服务器序列号",-1)
 	fmt.Println(s)
 }
 
