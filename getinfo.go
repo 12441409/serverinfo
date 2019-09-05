@@ -12,14 +12,18 @@ func GetServerInfo() {
 	var ip []byte
 	var err error
 	var cmd *exec.Cmd
+        var s string
 	// 执行单个shell命令时, 直接运行即可
 	cmd = exec.Command("/bin/sh", "-c", `dmidecode|grep "System Information" -A9|egrep  "Manufacturer|Product|Serial"|tr -d "\t"`)
 	if ip, err = cmd.Output(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-
-	fmt.Println(string(ip))
+        s = string(ip) 
+        s =  strings.Replace(s,"Manufacturer","服务器厂家",-1)
+        s =  strings.Replace(s,"Product Name","服务器型号",-1)
+        s =  strings.Replace(s,"Serial Number","序列号",-1)
+	fmt.Println(s)
 }
 
 func GetCpuInfo() {
